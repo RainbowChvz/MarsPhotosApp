@@ -14,6 +14,9 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .scheme("https")
             .build()
 
-        imgView.load(imgUri)
+        imgView.load(imgUri) {
+            placeholder(R.drawable.loading_animation)
+            error(R.drawable.ic_broken_image)
+        }
     }
 }
