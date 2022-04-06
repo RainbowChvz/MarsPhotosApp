@@ -3,7 +3,10 @@ package com.example.android.marsphotos
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.android.marsphotos.network.MarsPhoto
+import com.example.android.marsphotos.overview.PhotoGridAdapter
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
@@ -19,4 +22,9 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             error(R.drawable.ic_broken_image)
         }
     }
+}
+@BindingAdapter("listData")
+fun bindRecyclerView(recView: RecyclerView, photosList: List<MarsPhoto>?) {
+    val adapter = recView.adapter as PhotoGridAdapter
+    adapter.submitList(photosList)
 }
